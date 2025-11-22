@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Staff Chat Dashboard</title>
+  <style>
+    body { font-family:sans-serif; margin:16px; }
+    #rooms { display:flex; gap:12px; flex-wrap:wrap; }
+    .room { border:1px solid #aaa; border-radius:6px; width:300px; padding:8px; }
+    .msgs { border:1px solid #ddd; height:200px; overflow-y:auto; padding:6px; margin-bottom:6px; }
+  </style>
+</head>
+<body>
+<h3>Staff Chat Dashboard</h3>
+<div id="rooms"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script>
+  const socket = new SockJS('http://localhost:8080/ws');
+  const stomp = Stomp.over(socket);
+  stomp.debug = () => {};
+
+  const rooms = {}; // sessionId -> {el, sub}
+
+  function appendMsg(sessionId, txt) {
+    const msgsEl = document.getElementById(`msgs-${sessionId}`);
+    if (!msgsEl) return;
+    const d = document.createElement('div');
+    d.textContent = txt;
+    msgsEl.appendChild(d);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  }
+
+  function createRoom(sessionId) {
+    if (rooms[sessionId]) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'room';
+    wrap.innerHTML = `
+      <div><strong>Session:</strong> ${sessionId}</div>
+      <div class="msgs" id="msgs-${sessionId}"></div>
+      <div>
+        <input id="inp-${sessionId}" placeholder="Reply..." style="width:70%"/>
+        <button id="btn-${sessionId}">Send</button>
+      </div>
+    `;
+    document.getElementById('rooms').appendChild(wrap);
+
+    // Subscribe các tin NHỮNG LẦN SAU (tin đầu tiên staff nhận qua event CREATED)
+    const sub = stomp.subscribe(`/topic/chat/${sessionId}`, frame => {
+      const m = JSON.parse(frame.body);
+      const who = m.sender === 'CUSTOMER' ? 'Customer' : 'Staff';
+      appendMsg(sessionId, `${who}: ${m.content}`);
+    });
+
+    wrap.querySelector(`#btn-${sessionId}`).onclick = () => {
+      const input = wrap.querySelector(`#inp-${sessionId}`);
+      const content = input.value.trim();
+      if (!content) return;
+      // GỬI nhưng KHÔNG append cục bộ để tránh trùng;
+      // staff sẽ thấy tin khi server echo về qua subscription ở trên
+      stomp.send('/app/chat.send', {}, JSON.stringify({
+        sessionId,
+        sender: 'STAFF',
+        content,
+        timestamp: Date.now()
+      }));
+      input.value = '';
+    };
+
+    rooms[sessionId] = { el: wrap, sub };
+  }
+
+  function closeRoom(sessionId) {
+    const entry = rooms[sessionId];
+    if (!entry) return;
+    entry.sub.unsubscribe();
+    entry.el.remove();
+    delete rooms[sessionId];
+  }
+
+  stomp.connect({}, () => {
+    // Nhận event CREATED/CLOSED để quản lý chatbox
+    stomp.subscribe('/topic/staff/sessions', frame => {
+      const evt = JSON.parse(frame.body);
+      if (evt.type === 'CREATED') {
+        const sessionId = evt.sessionId;
+        createRoom(sessionId);
+        if (evt.initialMessage && evt.initialMessage.content) {
+          const m = evt.initialMessage;
+          const who = m.sender === 'CUSTOMER' ? 'Customer' : 'Staff';
+          appendMsg(sessionId, `${who}: ${m.content}`);
+        }
+      } else if (evt.type === 'CLOSED') {
+        closeRoom(evt.sessionId);
+      }
+    });
+  }, err => {
+    console.error('Connect error', err);
+    alert('Cannot connect staff dashboard. Check backend /ws and CORS.');
+  });
+</script>
+</body>
+</html>

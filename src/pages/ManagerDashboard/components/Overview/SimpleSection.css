@@ -1,0 +1,92 @@
+.simple-section {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 32px;
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+}
+
+.simple-section-header {
+  padding: 0 0 16px 0;
+  background: transparent;
+  border-bottom: none;
+}
+
+.simple-section-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.simple-section-header .header-icon {
+  font-size: 16px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f8f9fc;
+  border-radius: 8px;
+}
+
+.simple-section-header .header-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #475569;
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.simple-section-body {
+  padding: 0;
+}
+
+/* Compact variant for smaller sections */
+.simple-section.compact .simple-section-header {
+  padding: 0 0 12px 0;
+}
+
+.simple-section.compact .simple-section-header .header-title {
+  font-size: 14px;
+}
+
+.simple-section.compact .simple-section-header .header-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+}
+
+.simple-section.compact .simple-section-body {
+  padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .simple-section {
+    margin-bottom: 24px;
+  }
+
+  .simple-section-header {
+    padding: 0 0 12px 0;
+  }
+
+  .simple-section-header .header-title {
+    font-size: 14px;
+  }
+
+  .simple-section-header .header-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .simple-section-body {
+    padding: 0;
+  }
+}
+

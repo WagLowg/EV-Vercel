@@ -1,0 +1,146 @@
+/* Accordion Section Styles */
+.accordion-section {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.accordion-section:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.accordion-header:hover {
+  padding-left: 28px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.header-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count-badge {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.toggle-icon {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.accordion-section.open .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  padding: 24px;
+  animation: slideDown 0.3s ease;
+  background: #f9fafb;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Role-specific colors */
+.accordion-section.role-manager .accordion-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.accordion-section.role-manager .accordion-header:hover {
+  background: linear-gradient(135deg, #f5a5c0 0%, #f66a7a 100%);
+}
+
+.accordion-section.role-staff .accordion-header {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.accordion-section.role-staff .accordion-header:hover {
+  background: linear-gradient(135deg, #5fb5ff 0%, #10f5ff 100%);
+}
+
+.accordion-section.role-technician .accordion-header {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+}
+
+.accordion-section.role-technician .accordion-header:hover {
+  background: linear-gradient(135deg, #53f08b 0%, #48ffe7 100%);
+}
+
+.accordion-section.role-customer .accordion-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.accordion-section.role-customer .accordion-header:hover {
+  background: linear-gradient(135deg, #7680f0 0%, #865bb2 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .accordion-header {
+    padding: 14px 16px;
+  }
+
+  .accordion-body {
+    padding: 16px;
+  }
+
+  .header-title {
+    font-size: 14px;
+  }
+
+  .header-icon {
+    font-size: 18px;
+  }
+}
+

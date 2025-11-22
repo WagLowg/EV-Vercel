@@ -1,0 +1,250 @@
+/* Table Container */
+.parts-table-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Table Styling */
+.parts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table Head */
+.parts-table thead {
+  background: linear-gradient(135deg, #f8faff 0%, #f1f5f9 100%);
+}
+
+.parts-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+.parts-table th:first-child {
+  padding-left: 24px;
+}
+
+.parts-table th:last-child {
+  padding-right: 24px;
+}
+
+/* Table Body */
+.parts-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.parts-table tbody tr:hover {
+  background: rgba(79, 157, 255, 0.03);
+}
+
+.parts-table td {
+  padding: 16px 20px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.parts-table td:first-child {
+  padding-left: 24px;
+}
+
+.parts-table td:last-child {
+  padding-right: 24px;
+}
+
+/* Text Alignment */
+.text-center {
+  text-align: center !important;
+}
+
+/* Part ID */
+.part-id {
+  display: inline-block;
+  font-weight: 700;
+  color: #3b82f6;
+  font-size: 14px;
+}
+
+/* Part Name */
+.part-name {
+  display: inline-block;
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 14px;
+}
+
+/* Part Description */
+.part-description {
+  display: inline-block;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Price Badge */
+.price-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #065f46;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Stock Badge */
+.stock-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.action-btns {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.btn-action {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-action:active {
+  transform: translateY(0);
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Table Footer */
+.table-footer {
+  padding: 16px 24px;
+  background: #f8fafc;
+  text-align: right;
+}
+
+.result-count {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.result-count strong {
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+/* Empty State */
+.parts-empty-state {
+  padding: 80px 40px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.parts-empty-state svg {
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+.parts-empty-state h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.parts-empty-state p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .parts-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .parts-table th,
+  .parts-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .parts-table th:first-child,
+  .parts-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .parts-table th:last-child,
+  .parts-table td:last-child {
+    padding-right: 20px;
+  }
+
+  .part-description {
+    max-width: 200px;
+  }
+
+  .btn-action {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .table-footer {
+    padding: 12px 20px;
+  }
+
+  .result-count {
+    font-size: 13px;
+  }
+
+  .parts-empty-state {
+    padding: 60px 24px;
+  }
+}
+

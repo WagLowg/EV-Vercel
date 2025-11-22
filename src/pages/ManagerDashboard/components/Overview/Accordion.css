@@ -1,0 +1,99 @@
+.accordion-section {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.accordion-section:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #5b5ef5 0%, #4147d8 100%);
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.accordion-header:hover {
+  background: linear-gradient(135deg, #6b6fff 0%, #5157e8 100%);
+  padding-left: 28px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.header-icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.toggle-icon {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.accordion-section.open .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  padding: 24px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .accordion-header {
+    padding: 14px 16px;
+  }
+
+  .accordion-body {
+    padding: 16px;
+  }
+
+  .header-title {
+    font-size: 14px;
+  }
+
+  .header-icon {
+    font-size: 18px;
+  }
+}
+

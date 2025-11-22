@@ -1,0 +1,197 @@
+/* Parts Stats Container - Single card */
+.parts-stats-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+/* Stat Card Base */
+.parts-stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  justify-content: center;
+}
+
+/* Single card - larger and more prominent */
+.parts-stat-card.single-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 48px;
+  min-height: 200px;
+  flex-direction: row;
+  text-align: left;
+  gap: 32px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  border: 2px solid rgba(139, 92, 246, 0.1);
+}
+
+.parts-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.parts-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.parts-stat-card:hover::before {
+  opacity: 1;
+}
+
+/* Icon Styling */
+.parts-stat-card .stat-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.parts-stat-card:hover .stat-icon {
+  transform: scale(1.05);
+}
+
+/* Large icon for single card */
+.parts-stat-card .stat-icon-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: white;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.parts-stat-card.single-card:hover .stat-icon-large {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+}
+
+/* Content Styling */
+.parts-stat-card .stat-content {
+  width: 100%;
+}
+
+.parts-stat-card .stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.parts-stat-card .stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Large content for single card */
+.parts-stat-card .stat-content-large {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.parts-stat-card .stat-value-large {
+  font-size: 56px;
+  font-weight: 900;
+  color: #8b5cf6;
+  line-height: 1;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.parts-stat-card .stat-label-large {
+  font-size: 18px;
+  color: #1a1a2e;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.parts-stat-card .stat-description {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Card Variations - Single card */
+.parts-stat-card.total-parts::before {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+}
+
+.parts-stat-card.single-card::before {
+  height: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .parts-stats-container {
+    padding: 0 16px;
+  }
+
+  .parts-stat-card.single-card {
+    flex-direction: column;
+    padding: 32px 24px;
+    max-width: 100%;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .parts-stat-card .stat-icon-large {
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+  }
+
+  .parts-stat-card .stat-value-large {
+    font-size: 48px;
+  }
+
+  .parts-stat-card .stat-label-large {
+    font-size: 16px;
+  }
+
+  .parts-stat-card .stat-description {
+    font-size: 13px;
+  }
+}
+

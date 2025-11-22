@@ -1,0 +1,121 @@
+/* Parts Section Container */
+.parts-section {
+  width: 100%;
+}
+
+/* Toolbar */
+.parts-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* Search Box */
+.parts-search-box {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: 14px;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.parts-search-box:focus-within {
+  box-shadow: 0 4px 12px rgba(79, 157, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.parts-search-box svg {
+  color: #94a3b8;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.parts-search-box:focus-within svg {
+  color: #3b82f6;
+}
+
+.parts-search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #1a1a2e;
+  background: transparent;
+  font-weight: 500;
+}
+
+.parts-search-box input::placeholder {
+  color: #94a3b8;
+}
+
+/* Add Button */
+.parts-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  white-space: nowrap;
+}
+
+.parts-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.parts-add-btn:active {
+  transform: translateY(0);
+}
+
+.parts-add-btn svg {
+  font-size: 14px;
+}
+
+/* Loading State */
+.parts-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.parts-loading p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .parts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .parts-search-box {
+    max-width: none;
+  }
+
+  .parts-add-btn {
+    justify-content: center;
+  }
+}
+

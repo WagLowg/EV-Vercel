@@ -1,0 +1,173 @@
+/* Overview Stats Container */
+.overview-stats-container {
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Stats Section */
+.stats-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.section-icon {
+  font-size: 24px;
+  color: #3b82f6;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stats-grid.finance-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Stat Card Base */
+.overview-stat-card {
+  background: #f8f9fc;
+  border-radius: 12px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 140px;
+  justify-content: center;
+}
+
+.overview-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: white;
+  border-color: #cbd5e1;
+}
+
+/* Icon Styling */
+.overview-stat-card .stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  flex-shrink: 0;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.overview-stat-card:hover .stat-icon {
+  transform: scale(1.05);
+}
+
+/* Content Styling */
+.overview-stat-card .stat-content {
+  width: 100%;
+}
+
+.overview-stat-card .stat-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.overview-stat-card .stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid.finance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .overview-stats-container {
+    gap: 24px;
+  }
+
+  .stats-section {
+    padding: 20px;
+  }
+
+  .section-header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .section-icon {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+
+  .stats-grid,
+  .stats-grid.finance-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .overview-stat-card {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .overview-stat-card .stat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .overview-stat-card .stat-value {
+    font-size: 28px;
+  }
+
+  .overview-stat-card .stat-label {
+    font-size: 12px;
+  }
+}
+
