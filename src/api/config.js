@@ -11,7 +11,11 @@ const LOCAL_API = ""; // Empty string để dùng proxy của Vite
 const RENDER_API = "https://ev-service-center-maintance-management-um2j.onrender.com";
 
 // 🌐 Khi frontend deploy lên Vercel
-const VERCEL_API = ""; // có thể thay link khác nếu backend khác
+// ⚠️ Lưu ý: Để kết nối với backend local từ Vercel, bạn cần:
+// 1. Sử dụng ngrok: ngrok http 8080 -> lấy URL public
+// 2. Hoặc expose backend qua IP công khai
+// 3. Hoặc sử dụng biến môi trường VITE_API_URL
+const VERCEL_API = import.meta.env.VITE_API_URL || "http://localhost:8080"; // Thay bằng ngrok URL hoặc backend public URL
 
 // 🧠 Chọn API_BASE theo ENV
 let API_BASE;
